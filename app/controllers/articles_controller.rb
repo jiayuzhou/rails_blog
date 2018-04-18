@@ -1,4 +1,8 @@
 class ArticlesController < ApplicationController
+
+	# note the the routes are controlled by rail routes. 
+	# check routes using: bin/rails routes
+
 	def index
 		@articles = Article.all
 	end
