@@ -27,5 +27,16 @@
   <p>
     <%= form.submit %>
   </p>
- 
+
+  <%#=  @article.id == nil %>
+  <%#=  @article.class.instance_methods %>
+
+  <% if @article.id %>
+    <%= link_to 'Destroy', article_path(@article),
+              method: :delete,
+              data: { confirm: 'Are you sure?' } %>
+  <% end %>
+
 <% end %>
+
+ 
