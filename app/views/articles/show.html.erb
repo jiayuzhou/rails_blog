@@ -9,34 +9,13 @@
 </p>
 
 <h2>Comments</h2>
-<% @article.comments.each do |comment| %>
-  <p>
-    <strong>Commenter:</strong>
-    <%= comment.commenter %>
-  </p>
- 
-  <p>
-    <strong>Comment:</strong>
-    <%= comment.body %>
-  </p>
-<% end %>
+<%= render @article.comments %>
 
 <h2>Add a comment:</h2>
-<%= form_with(model: [ @article, @article.comments.build ], local: true) do |form| %>
-  <%# The form_with call here uses an array, 
-      which will build a nested route, such as /articles/1/comments %>
-  <p>
-    <%= form.label :commenter %><br>
-    <%= form.text_field :commenter %>
-  </p>
-  <p>
-    <%= form.label :body %><br>
-    <%= form.text_area :body %>
-  </p>
-  <p>
-    <%= form.submit %>
-  </p>
-<% end %>
+<%= render 'comments/form' %>
+<%# Rails is smart enough to spot the forward slash in that string and 
+    realize that you want to render the _form.html.erb file in the 
+    app/views/comments directory.%>
 
 <%= link_to 'New', new_article_path %> |
 <%= link_to 'Edit', edit_article_path(@article) %> |
