@@ -3,6 +3,8 @@ class ArticlesController < ApplicationController
   # note the the routes are controlled by rail routes.
   # check routes using: bin/rails routes
 
+  http_basic_authenticate_with name: 'admin', password: 'changeme', except: [:index, :show]
+
   def index
     @articles = Article.all
   end
